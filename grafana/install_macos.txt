@@ -1,0 +1,36 @@
+1. install docker
+
+https://docs.docker.com/docker-for-mac/install/
+
+2. install graphite
+
+docker run -d\
+ --name graphite\
+ --restart=always\
+ -p 80:80\
+ -p 2003-2004:2003-2004\
+ -p 2023-2024:2023-2024\
+ -p 8125:8125/udp\
+ -p 8126:8126\
+ graphiteapp/graphite-statsd
+ 
+
+
+3. install grafana
+
+
+docker run \
+  -d \
+  -p 3000:3000 \
+  --restart=always\
+  --name=grafana \
+  -v grafana-storage:/var/lib/grafana \
+  grafana/grafana
+  
+4. Test graphite in browser  
+http://localhost:80
+
+5. Configure grafana:
+http://localhost:3000
+
+use data source with browser and http://localhost:80

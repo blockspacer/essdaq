@@ -2,6 +2,7 @@
 
 echo "START GDGEM"
 
+
 # change to directory of script
 cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null
 export DETECTORDIR=$(pwd)
@@ -24,6 +25,6 @@ if [[ $EFU_CONFIG != "" ]]; then
   CONFIGARG="--file $(pwd)/${EFU_CONFIG}_config.json"
 fi
 
-startDaquiri
+./daquiri.sh
 
-../../efu/efu_start.sh  $CONFIGARG $CALIBARG $@
+../../efu/efu_start.sh  $CONFIGARG $CALIBARG --nohwcheck $@
